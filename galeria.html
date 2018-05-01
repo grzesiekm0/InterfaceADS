@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BMW ADS, OBD i K+DCAN</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    
+
+
+    <style type="text/css">
+      
+    .container{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    .row {
+  margin: 15px;
+}
+
+   body {
+    min-height: 100vh;
+    
+    
+}
+
+.container.gallery-container {
+    background-color: #fff;
+    color: #35373a;
+    min-height: 100vh;
+    padding-top: 70px;
+    
+}
+
+.gallery-container h1 {
+    text-align: center;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+}
+
+.gallery-container p.page-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 25px auto;
+    
+    font-size: 18px;
+}
+
+.tz-gallery {
+    padding: 40px;
+}
+
+.tz-gallery .lightbox img {
+    width: 100%;
+   
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+
+.tz-gallery .lightbox img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.tz-gallery img {
+    border-radius: 4px;
+}
+
+.baguetteBox-button {
+    background-color: transparent !important;
+}
+
+
+@media(max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .container.gallery-container {
+        border-radius: 0;
+    }
+}
+
+
+    </style>
+  </head>
+  <body>
+
+
+
+
+
+     
+ <div class="container  ">
+  
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">InterfejsADS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Start <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Zamówienia
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="sklep_ads.html">ADS</a>
+              <a class="dropdown-item" href="#">ADS+OBD</a>
+              <a class="dropdown-item" href="#">USB-OBD</a>
+              <a class="dropdown-item" href="#">K+DCAN</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="galeria.html">Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diagnostyka.html">Diagnostyka</a>
+          </li>
+        </ul>
+      </div>
+    </nav> 
+</div>
+ 
+<div class="container gallery-container bg-light">
+  
+    <h2 class="text-center">Galeria</h2>  
+
+    <p class="page-description text-center">Zdjęcia interfejsów ADS</p>   
+    <div class="tz-gallery">
+  
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/1.jpg">
+                    <img src="img/galeria_ads/1.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/2.jpg">
+                    <img src="img/galeria_ads/2.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/3.jpg">
+                    <img src="img/galeria_ads/3.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+          <div class="row"> 
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/4.jpg">
+                    <img src="img/galeria_ads/4.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/5.jpg">
+                    <img src="img/galeria_ads/5.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/6.jpg">
+                    <img src="img/galeria_ads/6.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+         
+        </div>
+        <div class="row"> 
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/7.jpg">
+                    <img src="img/galeria_ads/7.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/8.jpg">
+                    <img src="img/galeria_ads/8.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/9.jpg">
+                    <img src="img/galeria_ads/9.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+         
+        </div>
+        <div class="row"> 
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/10.jpg">
+                    <img src="img/galeria_ads/10.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/11.jpg">
+                    <img src="img/galeria_ads/11.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_ads/12.jpg">
+                    <img src="img/galeria_ads/12.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+         
+        </div>
+  
+    </div>
+
+
+    <p class="page-description text-center">Zdjęcia interfejsów OBD USB</p>   
+    
+    <div class="tz-gallery">
+      <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/1.jpg">
+                    <img src="img/galeria_obd_usb/1.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/2.jpg">
+                    <img src="img/galeria_obd_usb/2.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/3.jpg">
+                    <img src="img/galeria_obd_usb/3.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/4.jpg">
+                    <img src="img/galeria_obd_usb/4.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/5.jpg">
+                    <img src="img/galeria_obd_usb/5.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/6.jpg">
+                    <img src="img/galeria_obd_usb/6.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/7.jpg">
+                    <img src="img/galeria_obd_usb/7.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="lightbox" href="img/galeria_obd_usb/8.jpg">
+                    <img src="img/galeria_obd_usb/8.jpg" alt="Park" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+             
+            
+        </div>
+    </div>
+  <footer class="py-2 bg-dark">
+         <div class="container">
+            <p class="m-0 text-center text-white">Interfejs ADS</p>
+         </div>
+      </footer>
+</div>
+
+ 
+
+
+
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+</body>
+</html>

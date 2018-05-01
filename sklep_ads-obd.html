@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BMW ADS, OBD i K+DCAN</title>
+
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      .item {
+        padding: 20px;
+        transition: all .4s;
+        -webkit-transition: all .4s;
+      }
+      .item:hover {
+        transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        box-shadow: 0 0 20px #888;
+        background-color: #fff;
+      }
+
+      .simpleCart_items img {
+        max-width: 64px;
+        max-height: 64px;
+      }
+      .item-quantity, .item-decrement, .item-increment {
+        text-align: center;
+      }
+
+      body { padding-top: 70px; }
+
+      #footer {
+		  padding-top: 10px;
+		  margin-top: 30px;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 100%;
+		  background-color: #35383D
+		}
+
+	  .navbar{
+	  	background-color: #35383D
+	  }
+
+	  img{
+	  max-width: 100%;
+	  height: auto;
+
+	  }
+.img-responsive{
+  display: inline;
+}
+
+    </style>
+  </head>
+  <body>
+
+  
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+
+
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+            	<li>
+	            <a class="navbar-brand" href="index.html">Start</a></li>
+	            <li>
+	            <a class="navbar-brand" href="sklep_ads.html">ADS</a></li>
+	            <li>
+	            <a class="navbar-brand" href="sklep_ads-obd.html">ADS-OBD</a></li>
+	            <li>
+	            <a class="navbar-brand" href="sklep_obd-usb.html">OBD-USB</a></li>
+	            <li>
+	            <a class="navbar-brand" href="sklep_k+dcan.html">K+DCAN</a></li>
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+              <li class="koszyk">
+                <a href="#" data-toggle="modal" data-target="#myModal">Koszyk (<span class="simpleCart_quantity"></span>)</a></li>
+            </ul>
+	    	</div>              
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Koszyk <span class="showIfEmpty">jest pusty</span></h4>
+      </div>
+      <div class="hideIfEmpty">
+        <div class="modal-body">
+
+          <div class="simpleCart_items"></div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Łącznie</th>
+                <th>Koszty przesyłki</th>
+                <th>Do zapłaty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="simpleCart_total"></div></td>
+                <td><div class="simpleCart_shipping" ></div></td>
+                <td><div class="simpleCart_grandTotal"></div></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+        	<div class="col-xs-12">
+        		<div class="col-xs-6">
+        			<h7>Wybierz koszt przesyłki:</h7>
+			        <select id="shipp" onchange="simpleCart.update();">
+			    		<option value="11">List polecony ekonomiczny: 11 zł &nbsp;</option>
+			    		<option value="13">Paczka pocztowa ekonomiczna: 13 zł &nbsp;</option>
+			    		<option value="14">Paczka pocztowa priorytetowa: 14 zł &nbsp;</option>
+			    		<option value="10">Paczkomat INPOST: 10 zł &nbsp;
+			    		</option>
+			    		<option value="19">Paczka pocztowa za pobraniem: 19 zł &nbsp;</option>
+			    		<option value="17">Przesyłka kurierska: 17 zł &nbsp;
+			    		</option>
+			    		<option value="22">Przesyłka kurierska za pobraniem: 22 zł &nbsp;</option>
+			    		<option value="0">Odbiór osobisty: 0 zł &nbsp;</option>
+					</select>
+				</div>
+				<div class="col-xs-3">
+			          <!-- button to empty the cart -->
+			          <a href="javascript:;" class="simpleCart_empty btn btn-default">Opróżnij koszyk</a>
+			      </div>
+			      <div class="col-xs-3">
+			          <!-- create a checkout button -->
+			          <a href="javascript:;" class="simpleCart_checkout btn btn-primary">Złóż zamówienie</a>
+			    </div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Opis do opcji K -->
+<div class="modal fade" id="opis_opcjiK" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Opcja K</h4>
+      </div>
+      <div class="modal-body">
+        <p></br>Interfejs znajduje się w obudowie o wymiarach: 7,5x6x2,8cm. 
+W tej opcji jest wtyk okrągły 20-pinowy (dla BMW do ok. 2000 roku).</br> 
+Długość przewodu w stronę auta od interfejsu: ok. 120cm. </br>
+Długość przewodu w stronę komputera od interfejsu: ok. 80cm.  </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+    	</div>
+    </div>
+  </div>
+</div>
+
+<!-- Opis do opcji L -->
+<div class="modal fade" id="opis_opcjiL" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Opcja L</h4>
+      </div>
+      <div class="modal-body">
+        <p></br>Interfejs znajduje się w obudowie o wymiarach: 7,5x6x2,8cm.</br>
+W tej opcji jest wtyk OBDII (dla BMW od ok 2000 roku) </br>
+Długość przewodu w stronę auta od interfejsu: ok. 120cm. </br>
+Długość przewodu w stronę komputera od interfejsu: ok. 80cm.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opis do opcji M -->
+<div class="modal fade" id="opis_opcjiM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Opcja M</h4>
+      </div>
+      <div class="modal-body">
+        <p></br>Interfejs znajduje się w obudowie o wymiarach: 7,5x6x2,8cm. </br>
+W tej opcji są dwa wymienne wtyki: </br>
+- Wtyk okrągły 20-pinowy (dla BMW do ok. 2000 roku): </br>
+- Wtyk OBDII (dla BMW od ok 2000 roku): </br>
+Długość przewodu w stronę auta od interfejsu: ok. 120cm. </br>
+Długość przewodu w stronę komputera od interfejsu: ok. 80cm.  </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+    	</div>
+    </div>
+  </div>
+</div>
+
+<!-- Opis do nowego produktu 
+<div class="modal fade" id="opis_opcji" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Opcja M</h4>
+      </div>
+      <div class="modal-body">
+        <p></br>Interfejs znajduje się w obudowie o wymiarach: 7,5x6x2,8cm. </br>
+W tej opcji są dwa wymienne wtyki: </br>
+- Wtyk okrągły 20-pinowy (dla BMW do ok. 2000 roku): </br>
+- Wtyk OBDII (dla BMW od ok 2000 roku): </br>
+Długość przewodu w stronę auta od interfejsu: ok. 120cm. </br>
+Długość przewodu w stronę komputera od interfejsu: ok. 80cm.  </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+    	</div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+<div class="content text-center">
+
+	<h2 style="margin-bottom: 40px"> INTERFEJSY ADS-OBD na RS232
+ </h2>
+
+ <p style="margin-bottom: 40px">Do każdej opcji dodaje instrukcje na płycie CD.</br>
+Przed wysyłką każdy interfejs jest sprawdzany.  </br></br>
+Czas realizacji: do 10 dni roboczych (w zależności od dostępności części)</br></br>
+Uwaga!!! </br>
+BMW, które były produkowane ok 2000 roku mogą posiadać dwa złącza diagnostyczne. W tym wypadku okrągłe złącze służy do obsługi wszystkich modułów w aucie a złącze OBDII tylko i wyłącznie modułu silnika. 
+
+ </p>
+
+ 
+</div>
+
+
+      <div class="row">
+
+        <div class="col-md-6 item text-center">
+           <div class="simpleCart_shelfItem">
+              <div class="row">
+                <div class="col-xs-12 ">
+                  <h2 class="item_name">ADS-OBD OPCJA K </h2>
+                  <img src="img/ADS-OBD/opcjaK.jpg" class="img-responsive" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="padding: 5px">              
+                      <!-- Przycisk do opisu -->
+						<button class="btn btn-info " data-toggle="modal" data-target="#opis_opcjiK">
+						  Szczegóły
+						</button>
+                </div>
+              </div>
+              <div class="row">
+                  
+                      <div class="col-xs-4">
+                       <H4 class="item_price">250.00 zł</H4>
+                      </div>
+                      <div class="col-xs-4">
+                         <input type="text" value="1" class="item_Quantity form-control" placeholder="Ilość">
+                      </div>
+                      <div class="col-xs-4">
+                         <a class="item_add btn btn-primary" href="javascript:;"> Do koszyka </a>
+                      </div>
+                 
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-6 item text-center">
+           <div class="simpleCart_shelfItem">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h2 class="item_name">ADS-OBD OPCJA L </h2>
+                  <img src="img/ADS-OBD/opcjaL.jpg" class="img-responsive" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="padding: 5px">              
+                     <!-- Przycisk do opisu -->
+						<button class="btn btn-info " data-toggle="modal" data-target="#opis_opcjiL">
+						  Szczegóły
+						</button>
+                </div>
+              </div>
+              <div class="row">
+                  
+                      <div class="col-xs-4">
+                        <H4 class="item_price">250.00 zł</H4>
+                      </div>
+                      <div class="col-xs-4">
+                         <input type="text" value="1" class="item_Quantity form-control" placeholder="Ilość">
+                      </div>
+                      <div class="col-xs-4">
+                         <a class="item_add btn btn-primary" href="javascript:;"> Do koszyka </a>
+                      </div>
+                  
+              </div>
+           </div>
+        </div>
+
+      </div><!--row-->
+	  
+	  <div class="row">
+
+        <div class="col-md-6 item text-center">
+           <div class="simpleCart_shelfItem">
+              <div class="row">
+                <div class="col-xs-12 ">
+                  <h2 class="item_name">ADS-OBD OPCJA M </h2>
+                  <img src="img/ADS-OBD/opcjaM.jpg" class="img-responsive" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="padding: 5px">              
+                      <!-- Przycisk do opisu -->
+						<button class="btn btn-info " data-toggle="modal" data-target="#opis_opcjiM">
+						  Szczegóły
+						</button>
+                </div>
+              </div>
+              <div class="row">
+                  
+                      <div class="col-xs-4">
+                       <H4 class="item_price">280.00 zł</H4>
+                      </div>
+                      <div class="col-xs-4">
+                         <input type="text" value="1" class="item_Quantity form-control" placeholder="Ilość">
+                      </div>
+                      <div class="col-xs-4">
+                         <a class="item_add btn btn-primary" href="javascript:;"> Do koszyka </a>
+                      </div>
+                 
+              </div>
+           </div>
+        </div>
+		<!-- Jesli chcesz dodac nowy produkt odblokuj to i uzupelnij trescia. Potrzeba jeszcze odblokowac opis do produktu u gory dokumentu.
+        <div class="col-md-6 item text-center">
+           <div class="simpleCart_shelfItem">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h2 class="item_name">Opcja</h2>
+                  <img src="img/ADS/opcja.jpg" class="img-responsive" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="padding: 5px">              
+  
+						<button class="btn btn-info " data-toggle="modal" data-target="#opis_opcji">
+						  Szczegóły
+						</button>
+                </div>
+              </div>
+              <div class="row">
+                  
+                      <div class="col-xs-4">
+                        <H4 class="item_price">250.00 zł</H4>
+                      </div>
+                      <div class="col-xs-4">
+                         <input type="text" value="1" class="item_Quantity form-control" placeholder="Ilość">
+                      </div>
+                      <div class="col-xs-4">
+                         <a class="item_add btn btn-primary" href="javascript:;"> Do koszyka </a>
+                      </div>
+                  
+              </div>
+           </div>
+        </div>  -->
+
+      </div><!--row-->
+
+    
+    </div><!--container-->
+
+<div id="footer">
+      <p class="text-muted text-center" style="padding: 5px;">InterfejsADS</p>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="js/simpleCart.js"></script>
+    <script type="text/javascript">
+simpleCart.shipping = function(){
+  if( $("#shipp").val() == "11" ){return 11;}
+  if( $("#shipp").val() == "13" ){return 13;}
+  if( $("#shipp").val() == "14" ){return 14;}
+  if( $("#shipp").val() == "10" ){return 10;}
+  if( $("#shipp").val() == "19" ){return 19;}
+  if( $("#shipp").val() == "17" ){return 17;}
+  if( $("#shipp").val() == "22" ){return 22;}
+  if( $("#shipp").val() == "0" ){return 0;}
+};
+</script> 
+    <script>
+simpleCart({
+  // array representing the format and columns of the cart,
+  // see the cart columns documentation
+  cartColumns: [
+    { attr: "name", label: "Produkt"},
+    { view: "currency", attr: "price", label: "Cena"},
+    { view: "currency", attr: "shipping", label: "przesyłka"},
+    { view: "decrement", label: false, text: '<span class="glyphicon glyphicon-minus"></span>'},
+    { attr: "quantity", label: "Ilość"},
+    { view: "increment", label: false, text: '<span class="glyphicon glyphicon-plus"></span>'},
+    { view: "currency", attr: "total", label: "Razem" },
+    { view: "remove", text: '<span class="glyphicon glyphicon-remove"></span>', label: false}
+  ],
+
+  // "div" or "table" - builds the cart as a 
+  // table or collection of divs
+  cartStyle: "table", 
+
+  // how simpleCart should checkout, see the 
+  // checkout reference for more info 
+  checkout: { 
+     type: "SendForm" , 
+        url: "email.php" , 
+
+       extra_data: {
+    shipp: document.getElementById("shipp").value,
+cartid: "12321321",
+}
+      },
+//extra_data: {
+    // shipping: document.getElementById("shi").value;
+    //  shipping: "15",
+//}
+
+  // set the currency, see the currency 
+  // reference for more info
+  currency: "PLN",
+
+  // collection of arbitrary data you may want to store 
+  // with the cart, such as customer info
+  data: {},
+
+  // set the cart langauge 
+  // (may be used for checkout)
+  language: "english-us",
+
+  // array of item fields that will not be 
+  // sent to checkout
+  excludeFromCheckout: [],
+
+  // custom function to add shipping cost
+  shippingCustom: null,
+
+
+
+  // flat rate shipping option
+  shippingFlatRate: 0,
+
+  // added shipping based on this value 
+  // multiplied by the cart quantity
+  shippingQuantityRate: 0,
+
+  // added shipping based on this value 
+  // multiplied by the cart subtotal
+  shippingTotalRate: 0,
+
+  // tax rate applied to cart subtotal
+  taxRate: 0,
+
+  // true if tax should be applied to shipping
+  taxShipping: false,
+
+  // event callbacks 
+  beforeAdd     : null,
+  afterAdd      : null,
+  load        : null,
+  beforeSave    : null,
+  afterSave     : null,
+  update      : null,
+  ready     : null,
+  checkoutSuccess : null,
+  checkoutFail    : null,
+  beforeCheckout    : null,
+        beforeRemove           : null
+});
+
+// basic callback example
+simpleCart.bind( "afterAdd" , function(){
+  $( ".koszyk" ).fadeOut(500).fadeIn(500);
+});
+
+simpleCart.bind( 'beforeCheckout' , function( data ){
+data.shipp = document.getElementById("shipp").value;
+});
+
+
+simpleCart.bind( 'update' , function(){
+  if (simpleCart.quantity() == 0)
+  {
+    $( ".hideIfEmpty" ).hide();
+    $( ".showIfEmpty" ).show();
+  }
+  else
+  {
+    $( ".hideIfEmpty" ).show();
+    $( ".showIfEmpty" ).hide();    
+  }
+});
+
+    </script>
+  </body>
+</html>
